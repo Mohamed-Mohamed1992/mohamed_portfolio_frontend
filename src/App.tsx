@@ -1,23 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Profile from './pages/Profile';
+import Projects from './pages/Projects';
+import Achievements from './pages/Achievements';
+import Hobbies from './pages/Hobbies';
+import Blog from './pages/Blog';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="container mx-auto p-8">
-        <h1 className="text-4xl font-bold text-center text-blue-600 mb-4">
-          Tailwind CSS v3 is Working!
-        </h1>
-        <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
-          <p className="text-gray-700 mb-4">
-            If you see blue text, a white card with shadow, and proper spacing,
-            Tailwind CSS v3 is configured correctly!
-          </p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Test Button
-          </button>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Profile />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="achievements" element={<Achievements />} />
+          <Route path="hobbies" element={<Hobbies />} />
+          <Route path="blog" element={<Blog />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
